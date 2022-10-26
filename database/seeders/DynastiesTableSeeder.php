@@ -18,15 +18,33 @@ class DynastiesTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i<10; $i++)
+        for ($i=0; $i<30; $i++)
         {
             $Dynasties=$this->generateRandomDynasties();
             DB::table('dynasties')->insert([
                 'dynasty_name' => $Dynasties,
-                'dynasty_start_year' => rand(-221,420),
-                'dynasty_end_year' => rand(-207,589),
+                'dynasty_start_year' => rand(221,320),
+                'dynasty_end_year' => rand(328,589),
             ]);   
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         
     }
 }
