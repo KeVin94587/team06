@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Dynasty;
 use App\Models\Emperor;
 use Illuminate\Http\Request;
 
@@ -12,15 +14,17 @@ class EmperorsController extends Controller
         $emperors = Emperor::all();
         return view('emperors.index', ['emperors' => $emperors]);
     }
-    /*public function index()
+    
+    public function show($id)
     {
-        $emperors = Emperor::all();
-        $positions = Emperor::allPositions()->get();
-        $data = [];
-        foreach ($positions as $position)
-        {
-            $data["$positions -> position"] = $position -> position;
-        }
-        return view('emperors.index', ['emperors' => $emperors, 'positions'=>$data]);
-    }*/
+        $emperor = Emperor::findOrFail($id);
+        return view('emperors.show', ['emperors' => $emperor]);    
+    }
+
+    public function destroy($id)
+    {
+        $emperor = Emperor::findOrFail($id);
+        $emperor->delete();
+        return redirect('emperors');
+    }
 }

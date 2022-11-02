@@ -24,20 +24,28 @@
         <h1>顯示所有皇帝的視圖(view)</h1>
         <table>
         <tr>
-            <th>球員編號</th>
-            <th>姓名</th>
-            <th>所屬球隊</th>
-            <th>生日</th>
-            <th>到職日</th>
-            <th>位置</th>
-            <th>身高</th>
-            <th>體重</th>
-            <th>年資</th>
-            <th>國籍</th>
+            <th>皇帝編號</th>
+            <th>皇帝姓名</th>
+            <th>所屬朝代</th>
+            <th>皇帝壽命</th>
+            <th>帝登基年</th>
+            <th>帝退位年</th>
             <th>操作1</th>
             <th>操作2</th>
-            <th>操作3</th>
         </tr>
 
+        @foreach($emperors as $emperor)
+            <tr>
+                <td>{{ $emperor->id }}</td>
+                <td>{{ $emperor->emperor_name }}</td>
+                <td>{{ $emperor->dynasty_id }}</td>
+                <td>{{ $emperor->emperor_life }}</td>
+                <td>{{ $emperor->emperor_start_year }}</td>
+                <td>{{ $emperor->emperor_end_year }}</td>
+                <td><a href="{{ route('emperors.show', ['id'=>$emperor->id]) }}">詳細資料</a></td>
+                <td><a href="{{ route('emperors.destroy', ['id'=>$emperor->id]) }}">刪除皇帝</a></td>
+            </tr>
+        @endforeach
+    </table>
     </body>
 </html>

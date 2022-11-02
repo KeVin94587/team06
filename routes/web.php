@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmperorsController;
+use App\Http\Controllers\DynastiesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,9 @@ Route::get('/', function () {
 });
 
 Route::get('emperors', [EmperorsController::class, 'index'])->name('emperors.index');
+Route::get('emperors/{id}', [EmperorsController::class, 'show'])->where('id', '[0-9]+')->name('emperors.show');
+Route::get('emperors/delete/{id}', [EmperorsController::class, 'destroy'])->where('id', '[0-9]+')->name('emperors.destroy');
 
+Route::get('dynasties', [DynastiesController::class, 'index'])->name('dynasties.index');
+Route::get('dynasties/{id}', [DynastiesController::class, 'show'])->where('id', '[0-9]+')->name('dynasties.show');
+Route::get('dynasties/delete/{id}', [DynastiesController::class, 'destroy'])->where('id', '[0-9]+')->name('dynasties.destroy');
