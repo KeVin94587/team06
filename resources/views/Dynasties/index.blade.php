@@ -21,7 +21,7 @@
         </style>
     </head>
     <body class="antialiased">
-        顯示所有朝代的視圖(view)
+        <h1>顯示所有朝代的視圖(view)</h1>
         <table>
         <tr>
             <th>朝代編號</th>

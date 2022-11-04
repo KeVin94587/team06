@@ -18,7 +18,7 @@ class DynastiesTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i<9; $i++)
+        for ($i=0; $i<30; $i++)
         {
             $Dynasties=$this->generateRandomDynasties();
             DB::table('dynasties')->insert([
