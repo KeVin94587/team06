@@ -21,6 +21,6 @@
         </style>
     </head>
     <body class="antialiased">
-        編輯朝代的視圖(view)
+        <h1>編輯朝代的視圖(view)</h1>
     </body>
 </html>

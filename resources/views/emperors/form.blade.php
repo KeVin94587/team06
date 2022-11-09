@@ -21,6 +21,6 @@
         </style>
     </head>
     <body class="antialiased">
-        新增與編輯皇帝的表單視圖(view)
+        <h1>新增與編輯皇帝的表單視圖(view)</h1>
     </body>
 </html>

@@ -21,6 +21,6 @@
         </style>
     </head>
     <body class="antialiased">
-        編輯皇帝的視圖(view)
+        <h1>編輯皇帝的視圖(view)</h1>
     </body>
 </html>
