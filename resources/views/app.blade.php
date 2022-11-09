@@ -21,7 +21,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<a href="index.html" class="logo"><strong>TEAMS06</strong> <span>皇帝查詢系統</span></a>
+						<a href="emperors" class="logo"><strong>TEAMS06</strong> <span>皇帝查詢系統</span></a>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
