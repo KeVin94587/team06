@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Dynasty;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DynastiesController extends Controller
 {
@@ -25,4 +26,20 @@ class DynastiesController extends Controller
         $dynasty->delete();
         return redirect('dynasties');
     }
+
+    public function create()
+    {
+        $dynasties = DB::table('dynasties')
+            ->select('dynasties.id', 'dynasties.dynasty_name')
+            ->orderBy('dynasties.id', 'asc')
+            ->get();
+
+        $data = [];
+        foreach($dynasties as $dynasty)
+        {
+            $data[$dynasty->id] = $dynasty->dynasty_name;
+        }
+        return view('dynasties.create' , ['dynasties' =>$data]);
+    }
 }
+

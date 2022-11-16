@@ -6,7 +6,9 @@
 
 @section('team06_contents')
     <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-
+        <ul class="actions">
+            <li><a href="{{ route('dynasties.create') }}" class="button next">新增朝代</a></li>
+        </ul>
             <table style="text-align:center;" width="100%">
             <tr>
                 <th>朝代編號</th>
@@ -27,6 +29,7 @@
                     <td><a href="{{ route('dynasties.destroy', ['id'=>$dynasty->id]) }}">刪除朝代</a></td>
                 </tr>
             @endforeach
+            
         </table>
     </div>
 @endsection

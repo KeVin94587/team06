@@ -4049,10 +4049,10 @@ body.is-preload #banner:after {
 										<h2>@yield('team06_theme')</h2>
 									</header>
 									<p>@yield('team06_contents')</p>
-									<ul class="actions">
+									<!-- <ul class="actions">
 										<li><a href="{{ route('emperors.index') }}" class="button next">所有皇帝</a></li>
                                         <li><a href="{{ route('dynasties.index') }}" class="button next">所有朝代</a></li>
-									</ul>
+									</ul>-->
 								</div>
 							</section>
 
