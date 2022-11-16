@@ -6,7 +6,7 @@
 
 @section('team06_contents')
     <body class="antialiased">
-        <h1>顯示單一朝代的視圖(view)</h1>
+        <!-- <h1>顯示單一朝代的視圖(view)</h1> -->
         朝代編號：{{ $dynasties->id }}<br/>
         朝代國號：{{ $dynasties->dynasty_name }}<br/>
         國起始年：{{ $dynasties->dynasty_start_year }}<br/>
