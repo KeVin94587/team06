@@ -1945,6 +1945,7 @@ input, select, textarea {
 
 		input[type="text"]:invalid,
 		input[type="password"]:invalid,
+		input[type="number"]:invalid,
 		input[type="email"]:invalid,
 		input[type="tel"]:invalid,
 		input[type="search"]:invalid,
@@ -3998,6 +3999,9 @@ body.is-preload #banner:after {
 		opacity: 1;
 	}
         </style>
+<!-- 輸入框 -->
+		<style>
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -4006,9 +4010,9 @@ body.is-preload #banner:after {
 
 				<!-- Header -->
 					<header id="header" >
-						<a class="logo"><strong>TEAMS06</strong> <span>皇帝查詢系統</span></a>
+						<a href="{{ route('emperors.index') }}" class="logo"><strong>TEAMS06</strong> <span>皇帝查詢系統</span></a>
 						<nav>
-							<a href="#menu">Menu</a>
+							<!-- <a href="#menu">菜單</a> -->
 						</nav>
 					</header>
 
@@ -4064,7 +4068,7 @@ body.is-preload #banner:after {
 						<div class="inner">
 
 							<ul class="copyright">
-								<li>&copy; Untitled</li><li>Design: <a href="#">@include('footer')</a></li>
+								<li>&copy; 2022</li><li>Design: <a href="#">@include('footer')</a></li>
 							</ul>
 						</div>
 					</footer>

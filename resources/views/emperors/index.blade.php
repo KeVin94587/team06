@@ -8,10 +8,11 @@
     <body class="antialiased">
         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
             <ul class="actions">
-            <li><a href="{{ route('emperors.create') }}" class="button next">新增皇帝</a></li>
-        </ul>
+                <li><a href="{{ route('emperors.create') }}" class="button next">新增皇帝</a></li>
+                <li><a href="{{ route('dynasties.create') }}" class="button next">新增朝代</a></li>
+            </ul>
         </div>
-        <table style="text-align:center;" width="100%">
+        <table>
             <tr>
                 <th>皇帝編號</th>
                 <th>皇帝姓名</th>
@@ -28,7 +29,7 @@
                 <tr>
                     <td>{{ $emperor->id }}</td>
                     <td>{{ $emperor->emperor_name }}</td>
-                    <td>{{ $emperor->dynasty_id }}</td>
+                    <td>{{ $emperor->dynasty->dynasty_name }}</td>
                     <td>{{ $emperor->emperor_life }}</td>
                     <td>{{ $emperor->emperor_start_year }}</td>
                     <td>{{ $emperor->emperor_end_year }}</td>

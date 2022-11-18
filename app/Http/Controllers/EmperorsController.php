@@ -31,16 +31,17 @@ class EmperorsController extends Controller
 
     public function create()
     {
-        $emperors = DB::table('emperors')
-            ->select('emperors.id', 'emperors.emperor_name')
-            ->orderBy('emperors.id', 'asc')
+
+        $dynasties = DB::table('dynasties')
+            ->select('dynasties.id', 'dynasties.dynasty_name')
+            ->orderBy('dynasties.id', 'asc')
             ->get();
 
         $data = [];
-        foreach($emperors as $emperor)
+        foreach($dynasties as $dynasty)
         {
-            $data[$emperor->id] = $emperor->emperor_name;
+            $data[$dynasty->id] = $dynasty->dynasty_name;
         }
-        return view('emperors.create' , ['emperors' =>$data]);
+        return view('emperors.create' , ['dynasties' =>$data]);
     }
 }

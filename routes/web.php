@@ -24,11 +24,11 @@ Route::get('emperors', [EmperorsController::class, 'index'])->name('emperors.ind
 Route::get('emperors/create', [EmperorsController::class, 'create'])->name('emperors.create');
 
 Route::get('emperors/{id}', [EmperorsController::class, 'show'])->where('id', '[0-9]+')->name('emperors.show');
-Route::get('emperors/delete/{id}', [EmperorsController::class, 'destroy'])->where('id', '[0-9]+')->name('emperors.destroy');
+Route::delete('emperors/delete/{id}', [EmperorsController::class, 'destroy'])->where('id', '[0-9]+')->name('emperors.destroy');
 
 Route::get('dynasties', [DynastiesController::class, 'index'])->name('dynasties.index');
 
 Route::get('dynasties/create', [DynastiesController::class, 'create'])->name('dynasties.create');
 
 Route::get('dynasties/{id}', [DynastiesController::class, 'show'])->where('id', '[0-9]+')->name('dynasties.show');
-Route::get('dynasties/delete/{id}', [DynastiesController::class, 'destroy'])->where('id', '[0-9]+')->name('dynasties.destroy');
+Route::delete('dynasties/delete/{id}', [DynastiesController::class, 'destroy'])->where('id', '[0-9]+')->name('dynasties.destroy');

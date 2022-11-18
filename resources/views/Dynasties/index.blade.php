@@ -7,9 +7,10 @@
 @section('team06_contents')
     <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
         <ul class="actions">
+            <li><a href="{{ route('emperors.create') }}" class="button next">新增皇帝</a></li>
             <li><a href="{{ route('dynasties.create') }}" class="button next">新增朝代</a></li>
         </ul>
-            <table style="text-align:center;" width="100%">
+            <table>
             <tr>
                 <th>朝代編號</th>
                 <th>朝代國號</th>
