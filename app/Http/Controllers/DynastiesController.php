@@ -29,17 +29,7 @@ class DynastiesController extends Controller
 
     public function create()
     {
-        $dynasties = DB::table('dynasties')
-            ->select('dynasties.id', 'dynasties.dynasty_name')
-            ->orderBy('dynasties.id', 'asc')
-            ->get();
-
-        $data = [];
-        foreach($dynasties as $dynasty)
-        {
-            $data[$dynasty->id] = $dynasty->dynasty_name;
-        }
-        return view('dynasties.create' , ['dynasties' =>$data]);
+        return view('dynasties.create');
     }
 }
 
