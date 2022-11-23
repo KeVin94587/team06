@@ -13,4 +13,5 @@ class Emperor extends Model
     {
         return $this->belongsTo("App\Models\Dynasty",'dynasty_id','id');
     }
+
 }

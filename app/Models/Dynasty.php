@@ -9,5 +9,15 @@ class Dynasty extends Model
 {
     use HasFactory;
 
+    public function emperors()
+    {
+        return $this->hasMany('App\Models\Emperor','dynasty_id');
+    }
+
+    public function delete()
+    {
+        $this->emperors()->delete();
+        return parent::delete();
+    }
 
 }

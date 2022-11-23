@@ -27,7 +27,13 @@
                     <td>{{ $dynasty->dynasty_start_year }}</td>
                     <td>{{ $dynasty->dynasty_end_year }}</td>
                     <td><a href="{{ route('dynasties.show', ['id'=>$dynasty->id]) }}">詳細資料</a></td>
-                    <td><a href="{{ route('dynasties.destroy', ['id'=>$dynasty->id]) }}">刪除朝代</a></td>
+                    <td>
+                        <form action="{{ route('dynasties.destroy', ['id'=>$dynasty->id]) }}" method="POST">
+                            <input class="btn btn-default" type="submit" value="刪除朝代"/>
+                            @method('delete')
+                            @csrf
+                        </form>
+                    </td>
                 </tr>
             @endforeach
             

@@ -34,7 +34,13 @@
                     <td>{{ $emperor->emperor_start_year }}</td>
                     <td>{{ $emperor->emperor_end_year }}</td>
                     <td><a href="{{ route('emperors.show', ['id'=>$emperor->id]) }}">詳細資料</a></td>
-                    <td><a href="{{ route('emperors.destroy', ['id'=>$emperor->id]) }}">刪除皇帝</a></td>
+                    <td>
+                        <form action="{{ route('emperors.destroy', ['id'=>$emperor->id]) }}" method="POST">
+                            <input class="btn btn-default" type="submit" value="刪除皇帝"/>
+                            @method('delete')
+                            @csrf
+                        </form>
+                    </td>
                 </tr>
 
             @endforeach
