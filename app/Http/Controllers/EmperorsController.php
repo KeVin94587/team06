@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Dynasty;
 use App\Models\Emperor;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Request;
 
 class EmperorsController extends Controller
 {
+    public function store()
+    {
+        $input = Request::all();
+        Emperor::create($input);
+        return redirect('emperors');
+    }
     public function index()
     {
         

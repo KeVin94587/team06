@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 use App\Models\Dynasty;
-use Illuminate\Http\Request;
+use App\Models\Emperor;
+//use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Request;
+use Symfony\Component\Console\Input\Input;
 
 class DynastiesController extends Controller
 {
+    public function store()
+    {
+        $input = Request::all();
+        Dynasty::create($input);
+        return redirect('dynasties');
+    }
     public function index()
     {
         
@@ -17,7 +26,8 @@ class DynastiesController extends Controller
     public function show($id)
     {
         $dynasty = Dynasty::findOrFail($id);
-        return view('dynasties.show', ['dynasties' => $dynasty]);    
+        $emperors = $dynasty->emperors;
+        return view('dynasties.show', ['dynasties' => $dynasty, 'emperors'=>$emperors]);    
     }
 
     public function destroy($id)
