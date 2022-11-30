@@ -11,7 +11,7 @@
         朝代國號：{{ $dynasties->dynasty_name }}<br/>
         國起始年：{{ $dynasties->dynasty_start_year }}<br/>
         國結束年：{{ $dynasties->dynasty_end_year }}<br/>
-        該朝代的所有皇帝：<br/>
+        <h4>該朝代的所有皇帝</h5>
     </body>
 
     <table>
@@ -22,8 +22,7 @@
             <th>皇帝壽命</th>
             <th>帝登基年</th>
             <th>帝退位年</th>
-            <th>操作1</th>
-            <th>操作2</th>
+
         </tr>
         @foreach($emperors as $emperor)
 
