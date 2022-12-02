@@ -41,5 +41,25 @@ class DynastiesController extends Controller
     {
         return view('dynasties.create');
     }
+
+    public function edit($id)
+    {
+        $dynasty = Dynasty::findOrFail($id);
+        return view('dynasties.edit', ['dynasty'=>$dynasty]);
+    }
+
+    public function update($id)
+    {
+        $input = Request::all();
+        
+        $dynasty = Emperor::findOrFail($id);
+
+        $dynasty->dynasty_name = $input['dynasty_name'];
+        $dynasty->dynasty_start_year = $input['dynasty_start_year'];
+        $dynasty->dynasty_end_year = $input['dynasty_end_year'];
+
+        $dynasty->save();
+        return redirect('dynasties');
+    }
 }
 
