@@ -52,7 +52,7 @@ class DynastiesController extends Controller
     {
         $input = Request::all();
         
-        $dynasty = Emperor::findOrFail($id);
+        $dynasty = Dynasty::findOrFail($id);
 
         $dynasty->dynasty_name = $input['dynasty_name'];
         $dynasty->dynasty_start_year = $input['dynasty_start_year'];
