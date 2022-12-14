@@ -6,20 +6,33 @@ use App\Models\Dynasty;
 use App\Models\Emperor;
 //use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Request;
+//use Request;
+use App\Http\Requests\CreateEmperorsRequest;
 
 class EmperorsController extends Controller
 {
-    public function store()
-    {
-        $input = Request::all();
-        Emperor::create($input);
-        return redirect('emperors');
+    public function store(CreateEmperorsRequest $request)
+    { 
+        $emperor_name = $request->input('emperor_name');
+        $dynasty_id = $request->input('dynasty_id');
+        $emperor_life = $request->input('emperor_life');
+        $emperor_start_year = $request->input('emperor_start_year');
+        $emperor_end_year = $request->input('emperor_end_year');
+
+        $emperor = emperor::create([
+            'emperor_name'=>$emperor_name,
+            'dynasty_id'=>$dynasty_id,
+            'emperor_life'=>$emperor_life,
+            'emperor_start_year'=>$emperor_start_year,
+            'emperor_end_year'=>$emperor_end_year]);
+
+            return redirect('emperors');
     }
     public function index()
     {
         
         $emperors = Emperor::all();
+
         return view('emperors.index', ['emperors' => $emperors]);
     }
     
@@ -50,17 +63,15 @@ class EmperorsController extends Controller
         return view('emperors.edit' , [ 'emperor'=>$emperor,'dynasties' =>$tags,'selected_dyastyid'=>$selectedTag]);
     }
 
-    public function update($id)
+    public function update($id, CreateEmperorsRequest $request)
     {
-        $input = Request::all();
-        
         $emperor = Emperor::findOrFail($id);
 
-        $emperor->emperor_name = $input['emperor_name'];
-        $emperor->dynasty_id = $input['dynasty_id'];
-        $emperor->emperor_life = $input['emperor_life'];
-        $emperor->emperor_start_year = $input['emperor_start_year'];
-        $emperor->emperor_end_year = $input['emperor_end_year'];
+        $emperor->emperor_name =$request->input['emperor_name'];
+        $emperor->dynasty_id =$request->input['dynasty_id'];
+        $emperor->emperor_life =$request->input['emperor_life'];
+        $emperor->emperor_start_year =$request->input['emperor_start_year'];
+        $emperor->emperor_end_year =$request->input['emperor_end_year'];
 
         $emperor->save();
         return redirect('emperors');
