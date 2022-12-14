@@ -21,6 +21,9 @@ Route::get('/', function () {
 
 Route::get('emperors', [EmperorsController::class, 'index'])->name('emperors.index');
 
+Route::get('emperors/senior', [EmperorsController::class, 'senior'])->name('emperors.senior');
+
+
 Route::get('emperors/create', [EmperorsController::class, 'create'])->name('emperors.create');
 
 Route::post('emperors/store', [EmperorsController::class, 'store'])->name('emperors.store');

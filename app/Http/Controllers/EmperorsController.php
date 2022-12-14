@@ -35,6 +35,12 @@ class EmperorsController extends Controller
 
         return view('emperors.index', ['emperors' => $emperors]);
     }
+
+    public function senior()
+    {
+        $emperors = Emperor::senior()->get();
+        return view('emperors.index', ['emperors' => $emperors, 'showPagination'=>false]);
+    }
     
     public function show($id)
     {

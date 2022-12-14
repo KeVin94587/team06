@@ -22,4 +22,9 @@ class Emperor extends Model
         return $this->belongsTo("App\Models\Dynasty",'dynasty_id','id');
     }
 
+    public function scopeSenior($query)
+    {
+        $query->where('emperor_life', '>=', 10)->orderBy('emperor_life');
+    }
 }
+
