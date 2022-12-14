@@ -5,15 +5,26 @@ use App\Models\Dynasty;
 use App\Models\Emperor;
 //use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Request;
+//use Request;
 use Symfony\Component\Console\Input\Input;
+use Carbon\Carbon;
+use App\Http\Requests\CreateDynastiesRequest;
 
 class DynastiesController extends Controller
 {
-    public function store()
+    public function store(CreateDynastiesRequest $request)
     {
-        $input = Request::all();
-        Dynasty::create($input);
+        $dynasty_name = $request->input('dynasty_name');
+        $dynasty_start_year = $request->input('dynasty_start_year');
+        $dynasty_end_year = $request->input('dynasty_end_year');
+
+        Dynasty::create([
+            'dynasty_name' => $dynasty_name,
+            'dynasty_start_year' => $dynasty_start_year,
+            'dynasty_end_year' => $dynasty_end_year,
+            'created' => Carbon::now()
+        ]);
+
         return redirect('dynasties');
     }
     public function index()
