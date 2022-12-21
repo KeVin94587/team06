@@ -26,5 +26,14 @@ class Emperor extends Model
     {
         $query->where('emperor_life', '>=', 50)->orderBy('emperor_life');
     }
-}
 
+    public function scopeBCStartYear($query)
+    {
+        $query->where('emperor_start_year', '<=', 1)->orderBy('emperor_start_year');
+    }
+
+    public function scopeACStartYear($query)
+    {
+        $query->where('emperor_start_year', '>=', 1)->orderBy('emperor_start_year');
+    }
+}

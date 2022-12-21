@@ -10,7 +10,11 @@
             <ul class="actions">
                 <li><a href="{{ route('emperors.create') }}" class="button next">新增皇帝</a></li>
                 <li><a href="{{ route('dynasties.create') }}" class="button next">新增朝代</a></li>
-                <li><a href="{{ route('emperors.senior') }}" class="button next">資深皇帝</a></li>
+                <li><a href="{{ route('emperors.senior') }}" class="button next">長壽皇帝</a></li>
+                <li><a href="{{ route('emperors.BCStartYear') }}" class="button next">西元前皇帝</a></li>
+                <li><a href="{{ route('emperors.ACStartYear') }}" class="button next">西元後皇帝</a></li>
+
+
             </ul>
         </div>
         <table>

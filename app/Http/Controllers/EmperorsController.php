@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dynasty;
 use App\Models\Emperor;
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 //use Request;
 use App\Http\Requests\CreateEmperorsRequest;
@@ -41,7 +41,20 @@ class EmperorsController extends Controller
         $emperors = Emperor::senior()->get();
         return view('emperors.index', ['emperors' => $emperors, 'showPagination'=>false]);
     }
-    
+
+    public function BCStartYear()
+    {
+        $emperors = Emperor::BCStartYear()->get();
+        return view('emperors.index', ['emperors' => $emperors, 'showPagination'=>false]);
+    }
+
+    public function ACStartYear()
+    {
+        $emperors = Emperor::ACStartYear()->get();
+        return view('emperors.index', ['emperors' => $emperors, 'showPagination'=>false]);
+    }
+ 
+ 
     public function show($id)
     {
         $emperor = Emperor::findOrFail($id);
@@ -73,13 +86,13 @@ class EmperorsController extends Controller
     {
         $emperor = Emperor::findOrFail($id);
 
-        $emperor->emperor_name =$request->input['emperor_name'];
-        $emperor->dynasty_id =$request->input['dynasty_id'];
-        $emperor->emperor_life =$request->input['emperor_life'];
-        $emperor->emperor_start_year =$request->input['emperor_start_year'];
-        $emperor->emperor_end_year =$request->input['emperor_end_year'];
-
+        $emperor->emperor_name =$request->input('emperor_name');
+        $emperor->dynasty_id =$request->input('dynasty_id');
+        $emperor->emperor_life =$request->input('emperor_life');
+        $emperor->emperor_start_year =$request->input('emperor_start_year');
+        $emperor->emperor_end_year =$request->input('emperor_end_year');
         $emperor->save();
+        
         return redirect('emperors');
     }
 }
