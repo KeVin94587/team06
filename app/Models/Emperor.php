@@ -24,7 +24,7 @@ class Emperor extends Model
 
     public function scopeSenior($query)
     {
-        $query->where('emperor_life', '>=', 10)->orderBy('emperor_life');
+        $query->where('emperor_life', '>=', 50)->orderBy('emperor_life');
     }
 }
 
