@@ -36,4 +36,16 @@ class Emperor extends Model
     {
         $query->where('emperor_start_year', '>=', 1)->orderBy('emperor_start_year');
     }
+
+    public function scopeAllDynasties($query)
+    {  // SELECT `dynasty_id` FROM `emperors` GROUP BY `dynasty_id`
+        $query->select('dynasty_id')->groupBy('dynasty_id');
+    }
+
+    public function scopedynastysearch($query, $pos)
+    {
+        //SELECT * FROM `emperors` WHERE `dynasty_id`='1' ORDER BY `emperor_name`
+        $query->where('dynasty_id', '=', $pos)
+            ->orderBy('emperor_name');
+    }
 }
