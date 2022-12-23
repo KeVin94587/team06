@@ -13,7 +13,12 @@
                 <li><a href="{{ route('emperors.senior') }}" class="button next">長壽皇帝</a></li>
                 <li><a href="{{ route('emperors.BCStartYear') }}" class="button next">西元前皇帝</a></li>
                 <li><a href="{{ route('emperors.ACStartYear') }}" class="button next">西元後皇帝</a></li>
-
+                <form action="{{ url('emperors/dynastysearch') }}" method='POST'>
+                    {!! Form::label('pos', '選取朝代：') !!}
+                    {!! Form::select('pos', $dynasties, ['class' => 'form-control']) !!}
+                    <input class="btn btn-default" type="submit" value="查詢" />
+                    @csrf
+                </form>
 
             </ul>
         </div>

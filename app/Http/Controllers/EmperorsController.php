@@ -32,14 +32,22 @@ class EmperorsController extends Controller
     {
         
         $emperors = Emperor::all();
-
-        return view('emperors.index', ['emperors' => $emperors]);
+        $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty', 'emperors.dynasty');
+        return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination'=>false]);
     }
 
     public function senior()
     {
         $emperors = Emperor::senior()->get();
-        return view('emperors.index', ['emperors' => $emperors, 'showPagination'=>false]);
+        $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty', 'emperors.dynasty');
+        return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination'=>false]);
+    }
+
+    public function dynastysearch(Request $request)
+    {
+        $emperors = Emperor::dynastysearch($request->input('pos'))->get();
+        $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty', 'emperors.dynasty');
+        return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination'=>false]);
     }
 
     public function BCStartYear()
