@@ -42,10 +42,11 @@ class Emperor extends Model
         $query->select('dynasty_id')->groupBy('dynasty_id');
     }
 
-    public function scopedynastysearch($query, $pos)
+    public function scopedynasty_id($query, $pos)
     {
         //SELECT * FROM `emperors` WHERE `dynasty_id`='1' ORDER BY `emperor_name`
         $query->where('dynasty_id', '=', $pos)
             ->orderBy('emperor_name');
     }
+
 }

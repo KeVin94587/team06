@@ -23,7 +23,7 @@ Route::get('emperors', [EmperorsController::class, 'index'])->name('emperors.ind
 
 Route::get('emperors/senior', [EmperorsController::class, 'senior'])->name('emperors.senior');
 
-Route::post('emperors/dynastysearch', [EmperorsController::class, 'dynastysearch'])->name('emperors.dynastysearch');
+Route::post('emperors/dynasty_id', [EmperorsController::class, 'dynasty_id'])->name('emperors.dynasty_id');
 
 Route::get('emperors/BCStartYear', [EmperorsController::class, 'BCStartYear'])->name('emperors.BCStartYear');
 Route::get('emperors/ACStartYear', [EmperorsController::class, 'ACStartYear'])->name('emperors.ACStartYear');

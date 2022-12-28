@@ -32,22 +32,22 @@ class EmperorsController extends Controller
     {
         
         $emperors = Emperor::all();
-        $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty', 'emperors.dynasty');
+        $dynasties = Emperor::alldynasties()->pluck('emperors.dynasty_id', 'emperors.dynasty_id');
         return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination'=>false]);
     }
 
     public function senior()
     {
         $emperors = Emperor::senior()->get();
-        $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty', 'emperors.dynasty');
-        return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination'=>false]);
+        $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty_id', 'emperors.dynasty_id');
+        return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination' => false]);
     }
 
-    public function dynastysearch(Request $request)
+    public function dynasty_id(Request $request)
     {
-        $emperors = Emperor::dynastysearch($request->input('pos'))->get();
-        $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty', 'emperors.dynasty');
-        return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination'=>false]);
+        $emperors = Emperor::dynasty_id($request->input('dyn'))->get();
+        $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty_id', 'emperors.dynasty_id');
+        return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination' => false]);
     }
 
     public function BCStartYear()
