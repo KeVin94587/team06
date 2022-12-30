@@ -47,8 +47,17 @@ class EmperorsController extends Controller
 
     public function senior()
     {
+
+        
         $emperors = Emperor::senior()->get();
         $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty_id', 'emperors.dynasty_id');
+        
+        $dynasties = Dynasty::all();
+        $dynasties = $dynasties->mapWithKeys(function($dynasty) {
+
+        return [$dynasty->id => $dynasty->dynasty_name];
+});
+        
         return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination' => false]);
     }
 
@@ -67,6 +76,12 @@ class EmperorsController extends Controller
     {
         $emperors = Emperor::BCStartYear()->get();
         $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty_id', 'emperors.dynasty_id');
+        
+        $dynasties = Dynasty::all();
+        $dynasties = $dynasties->mapWithKeys(function($dynasty) {
+
+        return [$dynasty->id => $dynasty->dynasty_name];
+});
         return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination'=>false]);
     }
 
@@ -74,21 +89,20 @@ class EmperorsController extends Controller
     {
         $emperors = Emperor::ACStartYear()->get();
         $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty_id', 'emperors.dynasty_id');
+       
+        $dynasties = Dynasty::all();
+        $dynasties = $dynasties->mapWithKeys(function($dynasty) {
+
+        return [$dynasty->id => $dynasty->dynasty_name];
+});
         return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination'=>false]);
+
     }
  
  
     public function show($id)
     {
         $emperor = Emperor::findOrFail($id);
-
-        $emperor->emperor_name =$request->input('emperor_name');
-        $emperor->dynasty_id =$request->input('dynasty_id');
-        $emperor->emperor_life =$request->input('emperor_life');
-        $emperor->emperor_start_year =$request->input('emperor_start_year');
-        $emperor->emperor_end_year =$request->input('emperor_end_year');
-        $emperor->save();
-
         return view('emperors.show', ['emperors' => $emperor]);    
     }
 
@@ -115,6 +129,7 @@ class EmperorsController extends Controller
 
     public function update($id, CreateEmperorsRequest $request)
     {
+        
         $emperor = Emperor::findOrFail($id);
 
         $emperor->emperor_name =$request->input('emperor_name');
