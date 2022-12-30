@@ -27,7 +27,6 @@ Route::post('emperors/dynasty_id', [EmperorsController::class, 'dynasty_id'])->n
 Route::get('emperors/BCStartYear', [EmperorsController::class, 'BCStartYear'])->name('emperors.BCStartYear');
 Route::get('emperors/ACStartYear', [EmperorsController::class, 'ACStartYear'])->name('emperors.ACStartYear');
 
-
 Route::get('emperors/create', [EmperorsController::class, 'create'])->name('emperors.create');
 
 Route::post('emperors/store', [EmperorsController::class, 'store'])->name('emperors.store');
