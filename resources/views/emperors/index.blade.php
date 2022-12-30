@@ -6,6 +6,8 @@
 
 @section('team06_contents')
     <body class="antialiased">
+    
+    
         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
             <ul class="actions">
                 <li><a href="{{ route('emperors.create') }}" class="button next">新增皇帝</a></li>
@@ -15,11 +17,12 @@
                 <li><a href="{{ route('emperors.ACStartYear') }}" class="button next">西元後皇帝</a></li>
             </ul>
             <form action="{{ url('emperors/dynasty_id') }}" method='POST'>
-                {!! Form::label('dyn', '選取朝代外部鍵：') !!}
-                {!! Form::select('dyn', $dynasties, ['class' => 'form-control']) !!}
+                {!! Form::label('dyn', '選取朝代：') !!}
+                {!! Form::select('dyn', $dynasties,null, ['class' => 'form-control']) !!}
                 <input class="btn btn-default" type="submit" value="查詢" />
                 @csrf
             </form>
+
         </div>
         <table>
             <tr>

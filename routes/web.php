@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('emperors');
 });
-
 Route::get('emperors', [EmperorsController::class, 'index'])->name('emperors.index');
 
 Route::get('emperors/senior', [EmperorsController::class, 'senior'])->name('emperors.senior');

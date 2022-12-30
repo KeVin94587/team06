@@ -30,10 +30,19 @@ class EmperorsController extends Controller
     }
     public function index()
     {
-        
+ 
         $emperors = Emperor::all();
         $dynasties = Emperor::alldynasties()->pluck('emperors.dynasty_id', 'emperors.dynasty_id');
-        return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination'=>false]);
+
+        $dynasties = Dynasty::all();
+        $dynasties = $dynasties->mapWithKeys(function($dynasty) {
+
+        return [$dynasty->id => $dynasty->dynasty_name];
+});
+
+    return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination'=>false]);
+
+        
     }
 
     public function senior()
@@ -45,9 +54,13 @@ class EmperorsController extends Controller
 
     public function dynasty_id(Request $request)
     {
-        $emperors = Emperor::dynasty_id($request->input('dyn'))->get();
-        $dynasties = Emperor::allDynasties()->pluck('emperors.dynasty_id', 'emperors.dynasty_id');
-        return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'showPagination' => false]);
+        $dynasty_id = $request->input('dyn');
+        $emperors = Emperor::where('dynasty_id', $dynasty_id)->get();
+        $dynasties = Dynasty::all();
+        $dynasties = $dynasties->mapWithKeys(function($dynasty) {
+            return [$dynasty->id => $dynasty->dynasty_name];
+        });
+        return view('emperors.index', ['emperors' => $emperors, 'dynasties'=>$dynasties, 'selected_dynasty_id'=>$dynasty_id, 'showPagination' => false]);
     }
 
     public function BCStartYear()
@@ -103,4 +116,6 @@ class EmperorsController extends Controller
         
         return redirect('emperors');
     }
+
+
 }
