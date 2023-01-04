@@ -11,6 +11,56 @@ use App\Http\Requests\CreateEmperorsRequest;
 
 class EmperorsController extends Controller
 {
+    public function api_emperors()
+    {
+        return Emperor::all();
+    }
+
+    public function api_update(Request $request)
+    {
+        $emperor = Emperor::find($request->input('id'));
+        if ($emperor == null)
+        {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+            $emperor->emperor_name = $request->input('emperor_name');
+            $emperor->dynasty_id = $request->input('dynasty_id');
+            $emperor->emperor_life = $request->input('emperor_life');
+            $emperor->emperor_start_year = $request->input('emperor_start_year');
+            $emperor->emperor_end_year = $request->input('emperor_end_year');
+
+        if ($emperor->save())
+        {
+            return response()->json([
+                'status' => 1,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+    }
+    public function api_delete(Request $request)
+    {
+        $emperor = Emperor::find($request->input('id'));
+
+        if ($emperor == null)
+        {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+
+        if ($emperor->delete())
+        {
+            return response()->json([
+                'status' => 1,
+            ]);
+        }
+    }
+
     public function store(CreateEmperorsRequest $request)
     { 
         $emperor_name = $request->input('emperor_name');

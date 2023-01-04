@@ -8,6 +8,6 @@
 @section('team06_contents')
     @include('message.list')
     {!! Form::open(['url' => 'dynasties/store']) !!}
-    @include('dynasties.form', ['submitButtonText'=>'新增皇帝資料'])
+    @include('dynasties.form', ['submitButtonText'=>'新增朝代資料'])
     {!! Form::close() !!}
 @endsection
