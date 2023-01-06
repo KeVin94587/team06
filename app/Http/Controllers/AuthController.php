@@ -50,4 +50,40 @@ class AuthController extends Controller
                 ],
             ]);
     }
+
+    public function login(Request $request)
+    {
+
+        $this->validate($request, [
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string'],
+        ]);
+
+        /** @var User $user */
+        $user = User::query()
+            ->where('email', '=', $request->get('email'))
+            ->first();
+
+        if ($user === null || !Hash::check($request->get('password'), $user->password)) {
+            return response()
+                ->json([
+                    'status' => 0,
+                    'error' => [
+                        'code' => 1,
+                        'message' => 'These credentials do not match our records.',
+                    ],
+                ]);
+        }
+
+        // Generate new token
+        $token = $user->createToken('email');
+
+        return response()
+            ->json([
+                'status' => 1,
+                'data' => [
+                    'token' => $token->plainTextToken,
+                ],
+            ]);
+    }
 }
